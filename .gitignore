@@ -1,23 +1,10 @@
-# Virtual environment
 .venv/
-
-# Python cache files
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# macOS hidden file
-.DS_Store
-
-# Dataset & large files
 data/
-models/
-*.keras
-*.h5
 
-# Logs
-*.log
+models/*.keras
+!models/*.json
+
+.DS_Store
