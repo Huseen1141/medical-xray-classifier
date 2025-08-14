@@ -130,3 +130,24 @@ Kaggle dataset: Chest X-Ray Images (Pneumonia) — paultimothymooney/chest-xray-
 
 Selvaraju, R. R., et al. Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization.
 
+## ✅ Two-Stage Classifier (Normal → Subtype)
+
+To improve 3-class performance and avoid false VIRUS predictions on NORMAL images, we use a **two-stage pipeline**:
+
+1. **Stage A — NORMAL vs PNEUMONIA (binary)**  
+   MobileNetV2 with a tuned decision threshold **τ** (default loaded from `models/threshold.json`).  
+   If `p_pneumonia < τ` ⇒ **NORMAL**.
+2. **Stage B — BACTERIA vs VIRUS (subtype)**  
+   If the image is flagged as pneumonia in Stage A, a second MobileNetV2 predicts **BACTERIA** vs **VIRUS**.
+
+### Two-stage Results (Official Test Set)
+- **Accuracy:** ~**0.752**  
+- **Macro-F1:** ~**0.736**  
+- **Recall:** BACTERIA **0.905**, NORMAL **0.658**, VIRUS **0.649**
+
+![Confusion Matrix](docs/assets/confusion_3class_twostage.png)
+
+### Demo (Streamlit)
+```bash
+# two-stage UI (uses binary model + subtype model + threshold τ slider)
+python -m streamlit run app/streamlit_app_3class_twostage.py
