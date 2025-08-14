@@ -151,3 +151,4 @@ To improve 3-class performance and avoid false VIRUS predictions on NORMAL image
 ```bash
 # two-stage UI (uses binary model + subtype model + threshold τ slider)
 python -m streamlit run app/streamlit_app_3class_twostage.py
+<img width="479" height="804" alt="Screenshot 2025-08-14 143833" src="https://github.com/user-attachments/assets/6c0d33d8-4007-4f60-9fe4-b4b7e6abf187" />
